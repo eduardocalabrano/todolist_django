@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from todolist.models import Usuario, Categoria, Nota
+from .forms import UsuarioForm
 
 def listar_notas(request):
     listado_notas = Nota.objects.all()
@@ -12,3 +13,7 @@ def listar_usuarios(request):
 def listar_categorias(request):
     listado_categorias = Categoria.objects.all()
     return render(request, 'todolist/lista_categorias.html', {'cat_list': listado_categorias})
+
+def user_new(request):
+    form = UsuarioForm()
+    return render(request, 'todolist/editar_usuario.html', {'form': form})
