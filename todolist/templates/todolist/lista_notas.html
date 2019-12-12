@@ -1,1 +1,11 @@
-Hola Bob!
+<div>
+    <h1><a href="/">Lista de notas</a></h1>
+</div>
+
+{% for nota in task_list %}
+    <div>
+      <p> categoria: {{ nota.categoria}}</p>
+      <p> usuario: {{ nota.usuario}}</p>
+    </div>
+    <hr/>
+{% endfor %}
