@@ -3,7 +3,7 @@ from django.utils import timezone
 
 class Usuario(models.Model):
     nombre = models.CharField(max_length=50)
-    email = models.EmailField(max_length=254)
+    email = models.EmailField(max_length=254, unique=True)
     color = models.CharField(max_length=7)
     foto_usuario = models.ImageField(upload_to='usuario/%Y/%m/%d', default='usuario/default.png')
 

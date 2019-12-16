@@ -8,7 +8,18 @@ def listar_notas(request):
 
 def listar_usuarios(request):
     listado_usuarios = Usuario.objects.all()
-    return render(request, 'todolist/lista_usuarios.html', {'users_list': listado_usuarios})
+    if request.method == "POST":
+        form = UsuarioForm(request.POST)
+        if form.is_valid():
+            form.save()
+            form = UsuarioForm()
+            """Si se envía correctamente y posteriormente actualizo (F5) puede duplicarse el ingreso del dato. Por el momento solo lo evito por el unique=True del campo email"""
+        else:
+            """Falta saber como capturar un error, por ejemplo si no se cumple la condición unique del campo email y mostrar un mensaje en pantalla."""
+            form = UsuarioForm()
+    else:
+        form = UsuarioForm()
+    return render(request, 'todolist/lista_usuarios.html', {'users_list': listado_usuarios, 'form': form})
 
 def listar_categorias(request):
     listado_categorias = Categoria.objects.all()

@@ -1,6 +1,3 @@
-$(document).ready(function() {
-  document.getElementById("ingresaNuevoUsuario").onclick = function(){
-    alert('ok');
-  }
-
+$(document).ready(function(){
+  // $(".campos_new_user").val('');
 });

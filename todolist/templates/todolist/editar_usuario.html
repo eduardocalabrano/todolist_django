@@ -1,7 +1,17 @@
-{% block content %}
-    <h2>New user</h2>
+<!--
+template hecho para hacer pruebas de forms y extender templates. No se usa realmente
+-->
+
+{% extends 'todolist/base.html' %}
+
+{% block abc %}
+    <h2>Nuevo usuario</h2>
     <form method="POST" class="post-form">{% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="save btn btn-default">Save</button>
+        <!-- {{ form.as_p }} -->
+        {{ form.email.errors }}
+        <label for="{{ form.email.id_for_label }}">Email subject:</label>
+        {{ form.email }}
+
+        <button type="submit" class="btn btn-info">Save</button>
     </form>
 {% endblock %}
