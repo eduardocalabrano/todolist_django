@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from todolist.models import Usuario, Categoria, Nota
+from django.http import JsonResponse
 from .forms import UsuarioForm
 
 def listar_notas(request):
@@ -28,3 +29,12 @@ def listar_categorias(request):
 def user_new(request):
     form = UsuarioForm()
     return render(request, 'todolist/editar_usuario.html', {'form': form})
+
+def elimina_usuario(request):
+    id_usuario = request.GET.get('id', None)
+    registro = Usuario.objects.get(pk=id_usuario)
+    registro.delete()
+    data = {
+        'respuesta': 'Eliminación correcta'
+    }
+    return JsonResponse(data)

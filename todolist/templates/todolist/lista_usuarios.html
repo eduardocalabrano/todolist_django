@@ -17,7 +17,7 @@
             <td>{{ usuario.nombre|upper}}</td>
             <td>{{ usuario.email }}</td>
             <td>{{ usuario.color }}</td>
-            <td><i class="far fa-trash-alt"></i><i class="fas fa-user-edit"></i></td>
+            <td><i class="far fa-trash-alt botBorrarUsuario" data-usuario_del="{{ usuario.id }}"></i><i class="fas fa-user-edit botEditarUsuario" data-usuario_edi="{{ usuario.id }}"></i></td>
           </tr>
           {% endfor %}
         </tbody>
